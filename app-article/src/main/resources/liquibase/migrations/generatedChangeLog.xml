@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="initial/tables.xml"
+				   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+				   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet author="CodeGeneration" id="create_generated_table_article" labels="version:">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="article" />
+			</not>
+		</preConditions>
+		<createTable tableName="article">
+			<column name="id" type="${UUID}">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="authors" type="${JSON_OBJECT}"/>
+			<column name="keywords" type="${JSON_OBJECT}"/>
+			<column name="created_by" type="VARCHAR(255)"/>
+			<column name="updated_by" type="VARCHAR(255)"/>
+			<column name="created_on" type="VARCHAR(255)"/>
+			<column name="updated_on" type="VARCHAR(255)"/>
+			<column name="text_content" type="VARCHAR(255)" />
+			<column name="short_description" type="VARCHAR(255)" />
+			<column name="header" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>
